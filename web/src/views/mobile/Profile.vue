@@ -12,14 +12,14 @@
               readonly
               disabled
           />
-          <van-field label="头像">
-            <template #input>
-              <van-uploader v-model="fileList"
-                            reupload max-count="1"
-                            :deletable="false"
-                            :after-read="afterRead"/>
-            </template>
-          </van-field>
+<!--          <van-field label="头像">-->
+<!--            <template #input>-->
+<!--              <van-uploader v-model="fileList"-->
+<!--                            reupload max-count="1"-->
+<!--                            :deletable="false"-->
+<!--                            :after-read="afterRead"/>-->
+<!--            </template>-->
+<!--          </van-field>-->
 
           <van-field label="剩余对话次数">
             <template #input>
@@ -27,11 +27,11 @@
             </template>
           </van-field>
 
-          <van-field label="剩余绘图次数">
-            <template #input>
-              <van-tag type="primary">{{ form.img_calls }}</van-tag>
-            </template>
-          </van-field>
+<!--          <van-field label="剩余绘图次数">-->
+<!--            <template #input>-->
+<!--              <van-tag type="primary">{{ form.img_calls }}</van-tag>-->
+<!--            </template>-->
+<!--          </van-field>-->
 
           <van-field label="累计消耗tokens">
             <template #input>
