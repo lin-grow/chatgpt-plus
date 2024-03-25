@@ -42,7 +42,6 @@
         <div class="tool-box">
           <el-dropdown :hide-on-click="true" class="user-info" trigger="click" v-if="isLogin">
                         <span class="el-dropdown-link">
-                          <el-image :src="loginUser.avatar"/>
                           <span class="username">{{ loginUser.nickname }}</span>
                           <el-icon><ArrowDown/></el-icon>
                         </span>
@@ -65,14 +64,6 @@
                 <el-dropdown-item @click="logout">
                   <i class="iconfont icon-logout"></i>
                   <span>注销</span>
-                </el-dropdown-item>
-
-                <el-dropdown-item>
-                  <i class="iconfont icon-github"></i>
-                  <span>
-                    powered by
-                    <el-link type="primary" href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">chatgpt-plus-v3</el-link>
-                 </span>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -116,28 +107,6 @@
               <i class="iconfont icon-export"></i>
               <span>导出会话</span>
             </el-button>
-
-            <el-tooltip class="box-item"
-                        effect="dark"
-                        content="部署文档"
-                        placement="bottom">
-              <a href="https://ai.r9it.com/docs/install/" target="_blank">
-                <el-button type="primary" circle>
-                  <i class="iconfont icon-book"></i>
-                </el-button>
-              </a>
-            </el-tooltip>
-
-            <el-tooltip class="box-item"
-                        effect="dark"
-                        content="项目源码"
-                        placement="bottom">
-              <a href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">
-                <el-button type="success" circle>
-                  <i class="iconfont icon-github"></i>
-                </el-button>
-              </a>
-            </el-tooltip>
           </div>
         </div>
 
@@ -202,9 +171,6 @@
                       :rows="2"
                       placeholder="按 Enter 键发送消息，使用 Ctrl + Enter 换行"
                   />
-                  <span class="select-file">
-                    <file-select v-if="isLogin" :user-id="loginUser.id" @selected="insertURL"/>
-                  </span>
                   <span class="send-btn">
                     <el-button @click="sendMessage">
                       <el-icon><Promotion/></el-icon>
@@ -249,7 +215,7 @@ import {
   ArrowDown,
   Check,
   Close,
-  Delete, Document,
+  Delete,
   Edit,
   Plus,
   Promotion,
@@ -278,7 +244,6 @@ import ConfigDialog from "@/components/ConfigDialog.vue";
 import {checkSession} from "@/action/session";
 import Welcome from "@/components/Welcome.vue";
 import ChatMidJourney from "@/components/ChatMidJourney.vue";
-import FileSelect from "@/components/FileSelect.vue";
 
 const title = ref('ChatGPT-智能助手');
 const models = ref([])
@@ -573,7 +538,7 @@ const connect = function (chat_id, role_id) {
   // 心跳函数
   const sendHeartbeat = () => {
     clearTimeout(heartbeatHandle.value)
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
       if (socket.value !== null) {
         socket.value.send(JSON.stringify({type: "heartbeat", content: "ping"}))
       }

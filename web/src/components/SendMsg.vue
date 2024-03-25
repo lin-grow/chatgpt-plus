@@ -83,7 +83,7 @@ const handleConfirm = (dots) => {
 
 const loadCaptcha = () => {
   if (!validateMobile(props.receiver) && !validateEmail(props.receiver)) {
-    return ElMessage.error("请输入合法的手机号/邮箱地址")
+    return ElMessage.error("请输入合法的邮箱地址")
   }
 
   showCaptcha.value = true

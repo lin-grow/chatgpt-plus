@@ -25,7 +25,7 @@
               </div>
 
               <div class="block">
-                <el-input placeholder="请输入密码(8-16位)"
+                <el-input placeholder="请输入密码（8-16位）"
                           maxlength="16" size="large"
                           v-model="formData.password" show-password
                           autocomplete="off">
@@ -38,7 +38,7 @@
               </div>
 
               <div class="block">
-                <el-input placeholder="重复密码(8-16位)"
+                <el-input placeholder="重复密码（8-16位）"
                           size="large" maxlength="16" v-model="formData.repass" show-password
                           autocomplete="off">
                   <template #prefix>
@@ -70,7 +70,7 @@
               </div>
 
               <div class="block">
-                <el-input placeholder="邀请码"
+                <el-input placeholder="邀请码（选填）"
                           size="large"
                           v-model="formData.invite_code"
                           autocomplete="off">
@@ -126,7 +126,7 @@ import {arrayContains} from "@/utils/libs";
 import {setUserToken} from "@/store/session";
 
 const router = useRouter();
-const title = ref('ChatPlus 用户注册');
+const title = ref('ChatGPT 国内直连');
 const formData = ref({
   username: '',
   password: '',
@@ -140,7 +140,7 @@ const enableEmail = ref(false)
 const enableRegister = ref(true)
 const wxImg = ref("/images/wx.png")
 const ways = []
-const placeholder = ref("用户名：")
+const placeholder = ref("")
 
 httpGet("/api/admin/config/get?key=system").then(res => {
   if (res.data) {
@@ -207,7 +207,7 @@ const register = function () {
   top 0
   bottom 0
   background-color #091519
-  background-image url("~@/assets/img/reg-bg.jpg")
+  background-image url("~@/assets/img/login-bg.jpg")
   background-size cover
   background-position center
   background-repeat no-repeat

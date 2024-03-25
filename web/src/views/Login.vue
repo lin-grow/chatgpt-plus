@@ -36,13 +36,14 @@
 
           <el-row class="text-line" gutter="20">
             <el-button type="primary" @click="router.push('/register')" size="small" plain>注册新账号</el-button>
-            <el-button type="success" @click="showResetPass = true" size="small" plain>重置密码</el-button>
+<!--            <el-button type="success" @click="showResetPass = true" size="small" plain>重置密码</el-button>-->
+            <el-button type="success" @click="showForgetPass = true" size="small" plain>忘记密码？</el-button>
           </el-row>
         </div>
       </div>
 
-      <reset-pass @hide="showResetPass = false" :show="showResetPass"/>
-
+<!--      <reset-pass @hide="showResetPass = false" :show="showResetPass"/>-->
+      <forget-pass @hide="showForgetPass = false" :show="showForgetPass"/>
       <footer class="footer">
         <footer-bar/>
       </footer>
@@ -52,7 +53,7 @@
 
 <script setup>
 
-import {onMounted, onUnmounted, ref} from "vue";
+import {ref} from "vue";
 import {Lock, UserFilled} from "@element-plus/icons-vue";
 import {httpPost} from "@/utils/http";
 import {ElMessage} from "element-plus";
@@ -63,13 +64,15 @@ import {checkSession} from "@/action/session";
 import {setUserToken} from "@/store/session";
 import {validateEmail, validateMobile} from "@/utils/validate";
 import {prevRoute} from "@/router";
-import ResetPass from "@/components/ResetPass.vue";
+// import ResetPass from "@/components/ResetPass.vue";
+import ForgetPass from "@/components/ForgetPass.vue";
 
 const router = useRouter();
-const title = ref('ChatPlus 用户登录');
+const title = ref('ChatGPT 国内直连');
 const username = ref(process.env.VUE_APP_USER);
 const password = ref(process.env.VUE_APP_PASS);
-const showResetPass = ref(false)
+// const showResetPass = ref(false)
+const showForgetPass = ref(false)
 
 checkSession().then(() => {
   if (isMobile()) {
@@ -85,6 +88,7 @@ const handleKeyup = (e) => {
     login();
   }
 };
+
 
 const login = function () {
   if (!validateMobile(username.value) && !validateEmail(username.value)) {
