@@ -62,13 +62,13 @@
                 clearable
                 placeholder="输入你的问题"
             >
-              <template #left-icon>
-                <van-button round type="success" class="button-voice" @click="inputVoice">
-                  <el-icon>
-                    <Microphone/>
-                  </el-icon>
-                </van-button>
-              </template>
+<!--              <template #left-icon>-->
+<!--                <van-button round type="success" class="button-voice" @click="inputVoice">-->
+<!--                  <el-icon>-->
+<!--                    <Microphone/>-->
+<!--                  </el-icon>-->
+<!--                </van-button>-->
+<!--              </template>-->
 
               <template #button>
                 <van-button size="small" type="primary" @click="sendMessage">发送</van-button>
