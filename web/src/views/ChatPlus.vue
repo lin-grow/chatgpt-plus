@@ -42,7 +42,7 @@
         <div class="tool-box">
           <el-dropdown :hide-on-click="true" class="user-info" trigger="click" v-if="isLogin">
                         <span class="el-dropdown-link">
-                          <span class="username">{{ loginUser.nickname }}</span>
+                          <span class="username"> 我的账号 </span>
                           <el-icon><ArrowDown/></el-icon>
                         </span>
             <template #dropdown>
