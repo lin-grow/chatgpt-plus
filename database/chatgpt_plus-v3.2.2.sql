@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- 数据库： `chatgpt_plus`
 --
-CREATE DATABASE IF NOT EXISTS `chatgpt_plus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `chatgpt_plus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `chatgpt_plus`;
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `chatgpt_api_keys` (
   `last_used_at` int NOT NULL COMMENT '最后使用时间',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='OpenAI API ';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='OpenAI API ';
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `chatgpt_chat_history` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='聊天历史记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='聊天历史记录';
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE `chatgpt_chat_items` (
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '更新时间',
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户会话列表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户会话列表';
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ CREATE TABLE `chatgpt_chat_models` (
   `open` tinyint(1) NOT NULL COMMENT '是否开放模型',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='AI 模型表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='AI 模型表';
 
 --
 -- 转存表中的数据 `chatgpt_chat_models`
@@ -131,14 +131,14 @@ CREATE TABLE `chatgpt_chat_roles` (
   `id` int NOT NULL,
   `name` varchar(30) NOT NULL COMMENT '角色名称',
   `marker` varchar(30) NOT NULL COMMENT '角色标识',
-  `context_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '角色语料 json',
+  `context_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色语料 json',
   `hello_msg` varchar(255) NOT NULL COMMENT '打招呼信息',
   `icon` varchar(255) NOT NULL COMMENT '角色图标',
   `enable` tinyint(1) NOT NULL COMMENT '是否被启用',
   `sort_num` smallint NOT NULL DEFAULT '0' COMMENT '角色排序',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='聊天角色表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='聊天角色表';
 
 --
 -- 转存表中的数据 `chatgpt_chat_roles`
@@ -174,7 +174,7 @@ CREATE TABLE `chatgpt_configs` (
   `id` int NOT NULL,
   `marker` varchar(20) NOT NULL COMMENT '标识',
   `config_json` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 转存表中的数据 `chatgpt_configs`
@@ -198,7 +198,7 @@ CREATE TABLE `chatgpt_invite_codes` (
   `hits` int NOT NULL COMMENT '点击次数',
   `reg_num` smallint NOT NULL COMMENT '注册数量',
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户邀请码';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户邀请码';
 
 -- --------------------------------------------------------
 
@@ -211,11 +211,11 @@ CREATE TABLE `chatgpt_invite_logs` (
   `id` int NOT NULL,
   `inviter_id` int NOT NULL COMMENT '邀请人ID',
   `user_id` int NOT NULL COMMENT '注册用户ID',
-  `username` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
-  `invite_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '邀请码',
+  `username` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户名',
+  `invite_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '邀请码',
   `reward_json` text NOT NULL COMMENT '邀请奖励',
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='邀请注册日志';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='邀请注册日志';
 
 -- --------------------------------------------------------
 
@@ -233,11 +233,11 @@ CREATE TABLE `chatgpt_mj_jobs` (
   `reference_id` char(40) DEFAULT NULL COMMENT '引用消息 ID',
   `prompt` varchar(2000) NOT NULL COMMENT '会话提示词',
   `img_url` varchar(255) DEFAULT NULL COMMENT '图片URL',
-  `org_url` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '原始图片地址',
+  `org_url` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '原始图片地址',
   `hash` varchar(100) DEFAULT NULL COMMENT 'message hash',
   `progress` smallint DEFAULT '0' COMMENT '任务进度',
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='MidJourney 任务表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='MidJourney 任务表';
 
 -- --------------------------------------------------------
 
@@ -255,13 +255,13 @@ CREATE TABLE `chatgpt_orders` (
   `subject` varchar(100) NOT NULL COMMENT '订单产品',
   `amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单金额',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '订单状态（0：待支付，1：已扫码，2：支付失败）',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '备注',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '备注',
   `pay_time` int DEFAULT NULL COMMENT '支付时间',
   `pay_way` varchar(20) NOT NULL COMMENT '支付方式',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='充值订单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='充值订单表';
 
 -- --------------------------------------------------------
 
@@ -282,7 +282,7 @@ CREATE TABLE `chatgpt_products` (
   `sort_num` tinyint NOT NULL DEFAULT '0' COMMENT '排序',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员套餐表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='会员套餐表';
 
 --
 -- 转存表中的数据 `chatgpt_products`
@@ -311,7 +311,7 @@ CREATE TABLE `chatgpt_rewards` (
   `status` tinyint(1) NOT NULL COMMENT '核销状态，0：未核销，1：已核销',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户打赏';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户打赏';
 
 -- --------------------------------------------------------
 
@@ -323,14 +323,14 @@ DROP TABLE IF EXISTS `chatgpt_sd_jobs`;
 CREATE TABLE `chatgpt_sd_jobs` (
   `id` int NOT NULL,
   `user_id` int NOT NULL COMMENT '用户 ID',
-  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'txt2img' COMMENT '任务类别',
-  `task_id` char(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '任务 ID',
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'txt2img' COMMENT '任务类别',
+  `task_id` char(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '任务 ID',
   `prompt` varchar(2000) NOT NULL COMMENT '会话提示词',
   `img_url` varchar(255) DEFAULT NULL COMMENT '图片URL',
-  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '绘画参数json',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '绘画参数json',
   `progress` smallint DEFAULT '0' COMMENT '任务进度',
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Stable Diffusion 任务表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Stable Diffusion 任务表';
 
 -- --------------------------------------------------------
 
@@ -342,7 +342,7 @@ DROP TABLE IF EXISTS `chatgpt_users`;
 CREATE TABLE `chatgpt_users` (
   `id` int NOT NULL,
   `mobile` char(11) NOT NULL COMMENT '手机号码',
-  `password` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
+  `password` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
   `avatar` varchar(100) NOT NULL COMMENT '头像',
   `salt` char(12) NOT NULL COMMENT '密码盐',
   `total_tokens` bigint NOT NULL DEFAULT '0' COMMENT '累计消耗 tokens',
@@ -351,15 +351,15 @@ CREATE TABLE `chatgpt_users` (
   `img_calls` int NOT NULL DEFAULT '0' COMMENT '剩余绘图次数',
   `expired_time` int NOT NULL COMMENT '用户过期时间',
   `status` tinyint(1) NOT NULL COMMENT '当前状态',
-  `chat_config_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '聊天配置json',
-  `chat_roles_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '聊天角色 json',
-  `chat_models_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'AI模型 json',
+  `chat_config_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '聊天配置json',
+  `chat_roles_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '聊天角色 json',
+  `chat_models_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'AI模型 json',
   `last_login_at` int NOT NULL COMMENT '最后登录时间',
   `vip` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否会员',
   `last_login_ip` char(16) NOT NULL COMMENT '最后登录 IP',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户表';
 
 --
 -- 转存表中的数据 `chatgpt_users`
@@ -387,7 +387,7 @@ CREATE TABLE `chatgpt_user_login_logs` (
   `login_address` varchar(30) NOT NULL COMMENT '登录地址',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户登录日志';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户登录日志';
 
 --
 -- 转储表的索引

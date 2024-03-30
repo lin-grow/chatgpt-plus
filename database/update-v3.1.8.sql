@@ -10,12 +10,12 @@ CREATE TABLE `chatgpt_orders` (
   `subject` varchar(100) NOT NULL COMMENT '订单产品',
   `amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单金额',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '订单状态（0：待支付，1：已扫码，2：支付失败）',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '备注',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '备注',
   `pay_time` int DEFAULT NULL COMMENT '支付时间',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='充值订单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='充值订单表';
 
 -- 创建索引
 ALTER TABLE `chatgpt_orders` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `order_no` (`order_no`);
@@ -33,7 +33,7 @@ CREATE TABLE `chatgpt_products` (
     `sort_num` tinyint NOT NULL DEFAULT '0' COMMENT '排序',
     `created_at` datetime NOT NULL,
     `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员套餐表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='会员套餐表';
 
 INSERT INTO `chatgpt_products` (`id`, `name`, `price`, `discount`, `days`, `calls`, `enabled`, `sales`, `sort_num`, `created_at`, `updated_at`) VALUES
 (1, '会员1个月', '1.01', '1.00', 30, 0, 1, 0, 0, '2023-08-28 10:48:57', '2023-08-31 16:24:26'),
