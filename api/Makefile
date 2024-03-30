@@ -13,3 +13,8 @@ arm64:
 clean:
 	rm -rf bin/$(NAME)-*
 .PHONY: clean
+
+build:
+	go build -o $(NAME)-linux main.go
+	/usr/local/bin/pm2 start $(NAME)-linux
+.PHONY: build
