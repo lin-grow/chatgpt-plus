@@ -41,16 +41,9 @@ func NewSmsHandler(
 func (h *SmsHandler) SendCode(c *gin.Context) {
 	var data struct {
 		Receiver string `json:"receiver"` // 接收者
-		Key      string `json:"key"`
-		Dots     string `json:"dots"`
 	}
 	if err := c.ShouldBindJSON(&data); err != nil {
 		resp.ERROR(c, types.InvalidArgs)
-		return
-	}
-
-	if !h.captcha.Check(data) {
-		resp.ERROR(c, "验证码错误，请先完人机验证")
 		return
 	}
 
