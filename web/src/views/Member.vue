@@ -18,10 +18,10 @@
                   <el-button type="primary" @click="showBindMobileDialog = true">更改账号</el-button>
                 </el-col>
                 <el-col :span="12">
-                  <el-button type="primary" v-if="enableReward" @click="showRewardDialog = true">加入众筹</el-button>
+                  <el-button type="primary" v-if="enableReward" @click="showRewardDialog = true">微信充值</el-button>
                 </el-col>
                 <el-col :span="12">
-                  <el-button type="primary" v-if="enableReward" @click="showRewardVerifyDialog = true">众筹核销
+                  <el-button type="primary" v-if="enableReward" @click="showRewardVerifyDialog = true">充值核销
                   </el-button>
                 </el-col>
 
@@ -42,7 +42,7 @@
 
               <ItemList :items="list" v-if="list.length > 0" :gap="30" :width="240">
                 <template #default="scope">
-                  <div class="product-item" :style="{width: scope.width+'px'}">
+                  <div class="product-item" :style="{width: scope.width+'px'}"  @click="showRewardDialog = true">
                     <div class="image-container">
                       <el-image :src="vipImg" fit="cover"/>
                     </div>
@@ -54,10 +54,10 @@
                         <span class="label">商品原价：</span>
                         <span class="price">￥{{ scope.item.price }}</span>
                       </div>
-                      <div class="info-line">
-                        <span class="label">促销立减：</span>
-                        <span class="price">￥{{ scope.item.discount }}</span>
-                      </div>
+<!--                      <div class="info-line">-->
+<!--                        <span class="label">促销立减：</span>-->
+<!--                        <span class="price">￥{{ scope.item.discount }}</span>-->
+<!--                      </div>-->
                       <div class="info-line">
                         <span class="label">有效期：</span>
                         <span class="expire" v-if="scope.item.days > 0">{{ scope.item.days }}天</span>
@@ -111,13 +111,10 @@
           v-model="showRewardDialog"
           :show-close="true"
           width="400px"
-          title="参与众筹"
+          title="微信扫码支付"
       >
         <el-alert type="info" :closable="false">
-          <div style="font-size: 14px">您好，目前每单位算力众筹价格为 <strong style="color: #f56c6c">{{ powerPrice }}
-          </strong>元。
-            由于本人没有开通微信支付，付款后请凭借转账单号,点击【众筹核销】按钮手动核销。
-          </div>
+          <div style="font-size: 14px">您可以自助支付，如有问题请及时添加客服微信: fangaolin778</div>
         </el-alert>
         <div style="text-align: center;padding-top: 10px;">
           <el-image v-if="enableReward" :src="rewardImg"/>

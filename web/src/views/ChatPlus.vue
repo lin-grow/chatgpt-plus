@@ -66,14 +66,6 @@
                   <i class="iconfont icon-logout"></i>
                   <span>注销</span>
                 </el-dropdown-item>
-
-                <el-dropdown-item>
-                  <i class="iconfont icon-github"></i>
-                  <span>
-                    powered by
-                    <el-link type="primary" href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">chatgpt-plus-v3</el-link>
-                 </span>
-                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -119,22 +111,11 @@
 
             <el-tooltip class="box-item"
                         effect="dark"
-                        content="部署文档"
+                        content="学习文档"
                         placement="bottom">
-              <a href="https://ai.r9it.com/docs/install/" target="_blank">
+              <a href="https://www.qnaivety.com/" target="_blank">
                 <el-button type="primary" circle>
                   <i class="iconfont icon-book"></i>
-                </el-button>
-              </a>
-            </el-tooltip>
-
-            <el-tooltip class="box-item"
-                        effect="dark"
-                        content="项目源码"
-                        placement="bottom">
-              <a href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">
-                <el-button type="success" circle>
-                  <i class="iconfont icon-github"></i>
                 </el-button>
               </a>
             </el-tooltip>

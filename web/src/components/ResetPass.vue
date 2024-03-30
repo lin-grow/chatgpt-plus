@@ -11,14 +11,14 @@
 
         <el-form :model="form" label-width="120px" label-position="left">
           <el-form-item label="用户名">
-            <el-input v-model="form.username" placeholder="手机号/邮箱地址"/>
+            <el-input v-model="form.username" placeholder="邮箱地址"/>
           </el-form-item>
           <el-form-item label="验证码">
             <el-row :gutter="20">
-              <el-col :span="16">
+              <el-col :span="10">
                 <el-input v-model="form.code" maxlength="6"/>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="10">
                 <send-msg size="" :receiver="form.username"/>
               </el-col>
             </el-row>

@@ -2,14 +2,11 @@
   <div class="home">
     <div class="navigator">
       <div class="logo">
-        <el-image :src="logo"/>
+        <el-image src="/images/logo.png"/>
         <div class="divider"></div>
       </div>
       <ul class="nav-items">
         <li v-for="item in navs" :key="item.path">
-          <!--          <el-tooltip effect="light" :content="item.title" placement="right">-->
-          <!--            -->
-          <!--          </el-tooltip>-->
           <a @click="changeNav(item)" :class="item.path === curPath ? 'active' : ''">
             <el-image :src="item.icon" :width="20"/>
           </a>
@@ -35,7 +32,6 @@ import {httpGet} from "@/utils/http";
 import {ElMessage} from "element-plus";
 
 const router = useRouter();
-const logo = ref('/images/logo.png');
 const navs = ref([])
 const curPath = ref(router.currentRoute.value.path)
 
@@ -45,11 +41,6 @@ const changeNav = (item) => {
 }
 
 onMounted(() => {
-  httpGet("/api/config/get?key=system").then(res => {
-    logo.value = res.data['logo']
-  }).catch(e => {
-    ElMessage.error("获取系统配置失败：" + e.message)
-  })
   // 获取菜单
   httpGet("/api/menu/list").then(res => {
     navs.value = res.data
