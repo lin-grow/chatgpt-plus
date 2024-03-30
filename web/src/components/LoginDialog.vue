@@ -249,12 +249,8 @@ const submitRegister = () => {
   if (data.value.username === '') {
     return ElMessage.error('请输入用户名');
   }
-
-  if (activeName.value === 'mobile' && !validateMobile(data.value.username)) {
-    return ElMessage.error('请输入合法的手机号');
-  }
-
-  if (activeName.value === 'email' && !validateEmail(data.value.username)) {
+  
+  if (!validateEmail(data.value.username)) {
     return ElMessage.error('请输入合法的邮箱地址');
   }
 
